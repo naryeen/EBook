@@ -7,15 +7,18 @@ class User extends Equatable {
     required this.name,
     required this.avatar,
   });
+
+  // User(this.id, this.createdAt, this.name, this.avatar);
+
   const User.empty()
       : this(
-          id: 1,
-          createdAt: '_empty.createAt',
+          id: '1',
+          createdAt: '_empty.createAt',  
           name: '_empty.name',
           avatar: '_empty.name',
         );
 
-  final int id;
+  final String id;
   final String createdAt;
   final String name;
   final String avatar;
@@ -23,18 +26,3 @@ class User extends Equatable {
   @override
   List<Object?> get props => [id];
 }
-
-// void main() {
-//   const user1 = User(
-//     id: 1,
-//     createdAt: 'createdAt',
-//     name: 'name',
-//     avatar: ' avatar',
-//   );
-//   const user2 = User(
-//     id: 2,
-//     createdAt: 'createdAt',
-//     name: 'name',
-//     avatar: 'avatar',
-//   );
-// }
