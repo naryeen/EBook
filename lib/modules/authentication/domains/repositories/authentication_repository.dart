@@ -6,13 +6,14 @@ abstract class AuthenticationRepository {
 
   // Either<Exception, void>
   // Future<Either<Failure, void>> createUser(
-  ResultVoid createUser(
-      {required String createdAt,
-      required String name,
-      required String avatar});
+  ResultVoid createUser({
+    required String createdAt,
+    required String name,
+    required String avatar,
+  });
 
-// reture a list of users 
+// reture a list of users
   ResultFuture<List<User>> getUser();
 
-  getUsers() {}
+  // getUsers() {}
 }

@@ -15,7 +15,7 @@ class User extends Equatable {
           id: '1',
           createdAt: '_empty.createAt',  
           name: '_empty.name',
-          avatar: '_empty.name',
+          avatar: '_empty.avatar',
         );
 
   final String id;
@@ -24,5 +24,5 @@ class User extends Equatable {
   final String avatar;
 
   @override
-  List<Object?> get props => [id];
+  List<Object?> get props => [id, name, avatar];
 }

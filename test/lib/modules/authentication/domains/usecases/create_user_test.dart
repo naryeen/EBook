@@ -31,7 +31,7 @@ void main() {
         () => repository.createUser(
           createdAt: any(named: 'createdAt'),
           name: any(named: 'name'),
-          avatar: any(named: 'avat ar'),
+          avatar: any(named: 'avatar'),
         ),
       ).thenAnswer((_) async => const Right(null));
       // Act

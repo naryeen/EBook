@@ -16,12 +16,20 @@ class UserModel extends User {
           id: '1',
           createdAt: '_empty.createAt',
           name: '_empty.name',
-          avatar: '_empty.name',
+          avatar: '_empty.avatar',
         );
 // string source and return
 
   factory UserModel.fromJson(String source) =>
       UserModel.fromMap(jsonDecode(source) as DataMap);
+  // creating and extending the functionalities,
+  UserModel.fromMap(DataMap map)
+      : this(
+          avatar: map['avatar'] as String,
+          id: map['id'] as String,
+          createdAt: map['createdAt'] as String,
+          name: map['name'] as String,
+        );
 
   UserModel copyWith({
     String? avatar,
@@ -39,22 +47,13 @@ class UserModel extends User {
     );
   }
 
-  // creating and extending the functionalities,
-  UserModel.fromMap(DataMap map)
-      : this(
-          avatar: map['avatar'] as String,
-          id: map['id'] as String,
-          createdAt: map['createdAt'] as String,
-          name: map['name'] as String,
-        );
-
   DataMap toMap() => {
         'id': id,
         'avatar': avatar,
         'createdAt': createdAt,
         'name': name,
       };
-  String toJson() => jsonEncode(toMap());
+  String toJson(DataMap tMap) => jsonEncode(toMap());
 }
 
 // void main() {

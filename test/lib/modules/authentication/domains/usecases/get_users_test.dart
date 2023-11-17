@@ -15,7 +15,7 @@ void main() {
     usecase = GetUsers(repository);
   });
 
-  const  tResponse = [ User.empty()];
+  const tResponse = [User.empty()];
 
   test(
     'should call the [AuthRepo.GetUsers] and return [list<User>]',
