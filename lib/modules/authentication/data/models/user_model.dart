@@ -1,28 +1,26 @@
 import 'dart:convert';
-
 import 'package:todo/cores/utils/typedef.dart';
 import 'package:todo/modules/authentication/domains/entities/user.dart';
 
 class UserModel extends User {
   const UserModel({
-    required super.avatar,
-    required super.id,
-    required super.createdAt,
-    required super.name,
-  });
+    required String avatar,
+    required String id,
+    required String createdAt,
+    required String name,
+  }) : super(avatar: avatar, id: id, createdAt: createdAt, name: name);
 
   const UserModel.empty()
       : this(
           id: '1',
-          createdAt: '_empty.createAt',
+          createdAt: '_empty.createdAt',
           name: '_empty.name',
           avatar: '_empty.avatar',
         );
-// string source and return
 
   factory UserModel.fromJson(String source) =>
       UserModel.fromMap(jsonDecode(source) as DataMap);
-  // creating and extending the functionalities,
+
   UserModel.fromMap(DataMap map)
       : this(
           avatar: map['avatar'] as String,
@@ -38,8 +36,6 @@ class UserModel extends User {
     String? name,
   }) {
     return UserModel(
-      // if there is a avatar, id, createdAt or name we gonna use them
-      // if there is no avatar, id, createdAt or name, we gonna copy existing the
       avatar: avatar ?? this.avatar,
       id: id ?? this.id,
       createdAt: createdAt ?? this.createdAt,
@@ -53,10 +49,9 @@ class UserModel extends User {
         'createdAt': createdAt,
         'name': name,
       };
-  String toJson(DataMap tMap) => jsonEncode(toMap());
+
+  String toJson() => jsonEncode(toMap());
 }
 
-// void main() {
-//   const user = UserModel.empty();
-//   final newUser = user.copyWith(name: 'Naryeen');
-// }
+  // String toJson(DataMap tMap) => jsonEncode(toMap());
+

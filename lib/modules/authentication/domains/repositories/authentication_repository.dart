@@ -16,4 +16,6 @@ abstract class AuthenticationRepository {
   ResultFuture<List<User>> getUser();
 
   // getUsers() {}
+
+  // getUsers() {}
 }

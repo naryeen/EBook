@@ -21,13 +21,13 @@ void main() {
     'should call the [AuthRepo.GetUsers] and return [list<User>]',
     () async {
       // arrange
-      when(() => repository.getUsers()).thenAnswer(
+      when(() => repository.getUser()).thenAnswer(
         (_) async => const Right(tResponse),
       );
       // Act
       final result = await usecase();
       expect(result, equals(const Right<dynamic, List<User>>(tResponse)));
-      verify(() => repository.getUsers()).called(1);
+      verify(() => repository.getUser()).called(1);
       verifyNoMoreInteractions(repository);
     },
   );

@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:todo/cores/errors/exceptions.dart';
 
 abstract class Failure extends Equatable {
   const Failure({required this.message, required this.statusCode});
@@ -13,7 +14,9 @@ abstract class Failure extends Equatable {
 // types of failure we can have like
 // server failure, data source from server, remote or local , cash failure
 //
-class ApiFailure extends Failure {
+class APIFailure extends Failure {
   // Collect the message and pass this to the supper class...
-  const ApiFailure({required super.message, required super.statusCode});
+  const APIFailure({required super.message, required super.statusCode});
+  APIFailure.fromException(APIException exception)
+      : this(message: exception.message, statusCode: exception.statusCode);
 }

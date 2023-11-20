@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:todo/cores/utils/typedef.dart';
 import 'package:todo/modules/authentication/data/models/user_model.dart';
@@ -38,22 +37,21 @@ void main() {
   group('toMap', () {
     test('should return a [Map] with the right data', () {
       // acting, action
-      final result = tModel.toMap; // Change this line
+      final result = tModel.toMap(); // Change this line
       expect(result, equals(tMap));
     });
   });
 
   group('toJson', () {
-    test('should return a [JSON] String with the right data', () {
-      // acting, action
-
-      final result = tModel.toJson();
+    test('should return a [JSON] with the right data', () {
+      final result = tModel.toJson(); // Call the method without arguments
       final tJson = jsonEncode({
         "id": "1",
         "avatar": "_empty.avatar",
         "createdAt": "_empty.createdAt",
         "name": "_empty.name"
       });
+      // assert
       expect(result, tJson);
     });
   });

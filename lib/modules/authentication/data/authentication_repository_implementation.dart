@@ -1,3 +1,6 @@
+import 'package:dartz/dartz.dart';
+import 'package:todo/cores/errors/exceptions.dart';
+import 'package:todo/cores/errors/failure.dart';
 import 'package:todo/cores/utils/typedef.dart';
 import 'package:todo/modules/authentication/data/datasource/authentication_remote_data_source.dart';
 import 'package:todo/modules/authentication/domains/entities/user.dart';
@@ -20,12 +23,29 @@ class AuthenticationRepositoryImplementation
     // check if the methods returns proper data...
     // check and if it doesn't throw and exception, we return the actual
     // expected data,
-    throw UnimplementedError();
+    try {
+      await _remoteDataSource.createUser(
+          createdAt: createdAt, name: name, avatar: avatar);
+      //when we want to return a void
+      return const Right(null);
+    } on APIException catch (e) {
+      return Left(APIFailure.fromException(e));
+    }
   }
 
   @override
   ResultFuture<List<User>> getUser() async {
-    // TODO: implement getUser
-    throw UnimplementedError();
+    try {
+      final result = await _remoteDataSource.getUser();
+      return Right(result);
+    } on APIException catch (e) {
+      return Left(APIFailure.fromException(e));
+    }
   }
+
+  // @override
+  // getUsers() {
+  //   //
+  //   throw UnimplementedError();
+  // }
 }
